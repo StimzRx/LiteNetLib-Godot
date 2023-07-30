@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Runtime.CompilerServices;
+using Godot;
 
 namespace LiteNetLib.Utils
 {
@@ -274,6 +275,46 @@ namespace LiteNetLib.Utils
             return result;
         }
 
+
+
+        ///  GODOT EDITS  ///
+        public Vector3 GetVector3()
+        {
+            float x = GetFloat();
+            float y = GetFloat();
+            float z = GetFloat();
+
+            return new Vector3(x, y, z);
+        }
+
+        public Vector3I GetVector3I()
+        {
+            int x = GetInt();
+            int y = GetInt();
+            int z = GetInt();
+
+            return new Vector3I(x, y, z);
+        }
+
+        public Vector2 GetVector2()
+        {
+            float x = GetFloat();
+            float y = GetFloat();
+
+            return new Vector2(x, y);
+        }
+
+        public Vector2I GetVector2I()
+        {
+            int x = GetInt();
+            int y = GetInt();
+
+            return new Vector2I(x, y);
+        }
+        /////////////////////
+
+
+
         /// <summary>
         /// Note that "maxLength" only limits the number of characters in a string, not its size in bytes.
         /// </summary>
@@ -438,6 +479,46 @@ namespace LiteNetLib.Utils
         {
             return BitConverter.ToDouble(_data, _position);
         }
+
+
+
+        ///  GODOT EDITS  ///
+        public Vector3 PeekVector3()
+        {
+            float x = PeekFloat();
+            float y = PeekFloat();
+            float z = PeekFloat();
+
+            return new Vector3(x, y, z);
+        }
+
+        public Vector3I PeekVector3I()
+        {
+            int x = PeekInt();
+            int y = PeekInt();
+            int z = PeekInt();
+
+            return new Vector3I(x, y, z);
+        }
+
+        public Vector2 PeekVector2()
+        {
+            float x = PeekFloat();
+            float y = PeekFloat();
+
+            return new Vector2(x, y);
+        }
+
+        public Vector2I PeekVector2I()
+        {
+            int x = PeekInt();
+            int y = PeekInt();
+
+            return new Vector2I(x, y);
+        }
+        /////////////////////
+
+
 
         /// <summary>
         /// Note that "maxLength" only limits the number of characters in a string, not its size in bytes.
@@ -611,6 +692,60 @@ namespace LiteNetLib.Utils
             result = 0;
             return false;
         }
+
+
+
+        ///  GODOT EDITS  ///
+        public bool TryGetVector3(out Vector3 result)
+        {
+            if (AvailableBytes >= 12)
+            {
+                result = GetVector3();
+                return true;
+            }
+
+            result = new Vector3(0,0,0);
+            return false;
+        }
+
+        public bool TryGetVector3I(out Vector3I result)
+        {
+            if (AvailableBytes >= 12)
+            {
+                result = GetVector3I();
+                return true;
+            }
+
+            result = new Vector3I(0, 0, 0);
+            return false;
+        }
+
+        public bool TryGetVector2(out Vector2 result)
+        {
+            if (AvailableBytes >= 8)
+            {
+                result = GetVector2();
+                return true;
+            }
+
+            result = new Vector2(0, 0);
+            return false;
+        }
+
+        public bool TryGetVector2I(out Vector2I result)
+        {
+            if (AvailableBytes >= 8)
+            {
+                result = GetVector2I();
+                return true;
+            }
+
+            result = new Vector2I(0, 0);
+            return false;
+        }
+        /////////////////////
+
+
 
         public bool TryGetString(out string result)
         {

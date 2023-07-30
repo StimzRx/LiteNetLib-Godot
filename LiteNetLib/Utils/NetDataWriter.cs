@@ -3,6 +3,7 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using Godot;
 
 namespace LiteNetLib.Utils
 {
@@ -130,6 +131,37 @@ namespace LiteNetLib.Utils
             _position = position;
             return prevPosition;
         }
+
+
+        ///  GODOT EDITS  ///
+        public void Put(Vector3 value)
+        {
+            Put(value.X);
+            Put(value.Y);
+            Put(value.Z);
+        }
+
+        public void Put(Vector3I value)
+        {
+            Put(value.X);
+            Put(value.Y);
+            Put(value.Z);
+        }
+
+        public void Put(Vector2 value)
+        {
+            Put(value.X);
+            Put(value.Y);
+        }
+
+        public void Put(Vector2I value)
+        {
+            Put(value.X);
+            Put(value.Y);
+        }
+        /////////////////////
+
+
 
         public void Put(float value)
         {
