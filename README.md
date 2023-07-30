@@ -4,6 +4,10 @@ Lite reliable UDP library modified for use with the Godot game engine
 
 For full/original documentation please see [The Original GitHub Project](https://github.com/RevenantX/LiteNetLib)
 
+### Downloads
+You can find a .zip file containing the pre-build library [In The Releases Page](https://github.com/VenomCodeDev/LiteNetLib-Godot/releases). 
+Or, if you'd prefer, you can just reference the source project in your Godot project.
+
 ## My Changes
 I have pretty much just added the ability to use the GodotSharp Vector structs
 with this library. I did this by implementing the following types:
