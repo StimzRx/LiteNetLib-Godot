@@ -1,5 +1,7 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
+using System.Net.Sockets;
 using LiteNetLib.Utils;
 
 namespace LiteNetLib
@@ -111,7 +113,11 @@ namespace LiteNetLib
             _natPunchListener = listener;
         }
 
-        private void Send<T>(T packet, IPEndPoint target) where T : class, new()
+        private void Send<
+#if NET5_0_OR_GREATER
+            [DynamicallyAccessedMembers(Trimming.SerializerMemberTypes)]
+#endif
+        T>(T packet, IPEndPoint target) where T : class, new()
         {
             _cacheWriter.Reset();
             _cacheWriter.Put((byte)PacketProperty.NatMessage);
@@ -173,7 +179,7 @@ namespace LiteNetLib
         {
             //prepare outgoing data
             string networkIp = NetUtils.GetLocalIp(LocalAddrType.IPv4);
-            if (string.IsNullOrEmpty(networkIp))
+            if (string.IsNullOrEmpty(networkIp) || masterServerEndPoint.AddressFamily == AddressFamily.InterNetworkV6)
             {
                 networkIp = NetUtils.GetLocalIp(LocalAddrType.IPv6);
             }

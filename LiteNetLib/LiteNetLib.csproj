@@ -9,8 +9,11 @@
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Title>Lite reliable UDP library for Mono and .NET </Title>
+    <IsTrimmable>true</IsTrimmable>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
     <PackageId>LiteNetLib</PackageId>
   </PropertyGroup>
 
@@ -59,7 +62,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GodotSharp" Version="4.2.0" />
+    <Reference Include="GodotSharp">
+      <HintPath>..\..\..\.nuget\packages\godotsharp\4.2.68-dev\lib\net6.0\GodotSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
