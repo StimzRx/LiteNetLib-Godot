@@ -67,4 +67,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="GodotSharp" Version="4.3.78-rc" />
+  </ItemGroup>
+
 </Project>
